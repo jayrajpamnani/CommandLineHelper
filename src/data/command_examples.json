@@ -1,0 +1,588 @@
+{
+    "examples": [
+        {
+            "nl": "List all files in the current directory",
+            "bash": "ls -la"
+        },
+        {
+            "nl": "Show disk usage of the home directory",
+            "bash": "du -sh ~"
+        },
+        {
+            "nl": "Find all .txt files in /var/log directory",
+            "bash": "find /var/log -name \"*.txt\""
+        },
+        {
+            "nl": "Display the last 20 lines of the file /var/log/syslog",
+            "bash": "tail -n 20 /var/log/syslog"
+        },
+        {
+            "nl": "Show running processes containing the word \"python\"",
+            "bash": "ps aux | grep python"
+        },
+        {
+            "nl": "Count the number of lines in a file named \"data.csv\"",
+            "bash": "wc -l data.csv"
+        },
+        {
+            "nl": "Print the current working directory",
+            "bash": "pwd"
+        },
+        {
+            "nl": "Search recursively for the word \"error\" in the /etc directory",
+            "bash": "grep -r \"error\" /etc"
+        },
+        {
+            "nl": "Show free memory and swap space",
+            "bash": "free -h"
+        },
+        {
+            "nl": "Create a new directory called \"backup\"",
+            "bash": "mkdir backup"
+        },
+        {
+            "nl": "Remove all files with .log extension in /tmp directory",
+            "bash": "rm /tmp/*.log"
+        },
+        {
+            "nl": "Copy all .jpg files from Pictures to Backup folder",
+            "bash": "cp ~/Pictures/*.jpg ~/Backup/"
+        },
+        {
+            "nl": "Download a file from a URL using curl",
+            "bash": "curl -O http://example.com/file.zip"
+        },
+        {
+            "nl": "Change permission of script.sh to be executable",
+            "bash": "chmod +x script.sh"
+        },
+        {
+            "nl": "Find files modified in the last 2 days in /home/user",
+            "bash": "find /home/user -mtime -2"
+        },
+        {
+            "nl": "Display network interfaces and their IP addresses",
+            "bash": "ip addr show"
+        },
+        {
+            "nl": "Show all listening TCP ports",
+            "bash": "netstat -tlnp"
+        },
+        {
+            "nl": "Extract a tar.gz archive named backup.tar.gz",
+            "bash": "tar -xzvf backup.tar.gz"
+        },
+        {
+            "nl": "Show environment variables",
+            "bash": "printenv"
+        },
+        {
+            "nl": "Kill a process by name \"node\"",
+            "bash": "pkill node"
+        },
+        {
+            "nl": "Move file.txt to the Documents folder",
+            "bash": "mv file.txt ~/Documents/"
+        },
+        {
+            "nl": "Rename config.old to config.backup",
+            "bash": "mv config.old config.backup"
+        },
+        {
+            "nl": "Create an empty file called notes.txt",
+            "bash": "touch notes.txt"
+        },
+        {
+            "nl": "Show file permissions for all files in current directory",
+            "bash": "ls -l"
+        },
+        {
+            "nl": "Find the largest files in the home directory",
+            "bash": "find ~ -type f -exec ls -lh {} + | sort -k5 -hr | head -10"
+        },
+        {
+            "nl": "Compare two files side by side",
+            "bash": "diff -y file1.txt file2.txt"
+        },
+        {
+            "nl": "Show file type information for document.pdf",
+            "bash": "file document.pdf"
+        },
+        {
+            "nl": "Create a symbolic link to /usr/bin/python3",
+            "bash": "ln -s /usr/bin/python3 python"
+        },
+        {
+            "nl": "Find empty directories in the current path",
+            "bash": "find . -type d -empty"
+        },
+        {
+            "nl": "Display the first 10 lines of a file",
+            "bash": "head -n 10 filename.txt"
+        },
+        {
+            "nl": "Sort lines in a file alphabetically",
+            "bash": "sort filename.txt"
+        },
+        {
+            "nl": "Remove duplicate lines from a file",
+            "bash": "sort filename.txt | uniq"
+        },
+        {
+            "nl": "Count words in a text file",
+            "bash": "wc -w document.txt"
+        },
+        {
+            "nl": "Replace all occurrences of \"old\" with \"new\" in file.txt",
+            "bash": "sed -i 's/old/new/g' file.txt"
+        },
+        {
+            "nl": "Show lines containing \"error\" from log file",
+            "bash": "grep \"error\" logfile.txt"
+        },
+        {
+            "nl": "Display file content with line numbers",
+            "bash": "cat -n filename.txt"
+        },
+        {
+            "nl": "Convert all text to uppercase in a file",
+            "bash": "tr '[:lower:]' '[:upper:]' < input.txt"
+        },
+        {
+            "nl": "Extract column 2 from a CSV file",
+            "bash": "cut -d',' -f2 data.csv"
+        },
+        {
+            "nl": "Show system uptime and load average",
+            "bash": "uptime"
+        },
+        {
+            "nl": "Display CPU information",
+            "bash": "lscpu"
+        },
+        {
+            "nl": "Show mounted filesystems",
+            "bash": "df -h"
+        },
+        {
+            "nl": "List USB devices connected to system",
+            "bash": "lsusb"
+        },
+        {
+            "nl": "Display kernel version",
+            "bash": "uname -r"
+        },
+        {
+            "nl": "Show memory usage by process",
+            "bash": "ps aux --sort=-%mem | head"
+        },
+        {
+            "nl": "Check which user is currently logged in",
+            "bash": "whoami"
+        },
+        {
+            "nl": "Display system hostname",
+            "bash": "hostname"
+        },
+        {
+            "nl": "Show hardware information",
+            "bash": "lshw -short"
+        },
+        {
+            "nl": "Show all processes sorted by CPU usage",
+            "bash": "ps aux --sort=-%cpu"
+        },
+        {
+            "nl": "Display real-time system processes",
+            "bash": "top"
+        },
+        {
+            "nl": "Find process ID of Firefox",
+            "bash": "pgrep firefox"
+        },
+        {
+            "nl": "Kill process with ID 1234",
+            "bash": "kill 1234"
+        },
+        {
+            "nl": "Force kill a stubborn process",
+            "bash": "kill -9 1234"
+        },
+        {
+            "nl": "Show processes running as root user",
+            "bash": "ps -U root"
+        },
+        {
+            "nl": "Display process tree",
+            "bash": "pstree"
+        },
+        {
+            "nl": "Run command in background",
+            "bash": "command &"
+        },
+        {
+            "nl": "List all background jobs",
+            "bash": "jobs"
+        },
+        {
+            "nl": "Test internet connectivity to google.com",
+            "bash": "ping google.com"
+        },
+        {
+            "nl": "Show network routing table",
+            "bash": "route -n"
+        },
+        {
+            "nl": "Display active network connections",
+            "bash": "ss -tuln"
+        },
+        {
+            "nl": "Download file with wget",
+            "bash": "wget https://example.com/file.zip"
+        },
+        {
+            "nl": "Check if port 80 is open on localhost",
+            "bash": "nc -zv localhost 80"
+        },
+        {
+            "nl": "Show DNS information for a domain",
+            "bash": "nslookup example.com"
+        },
+        {
+            "nl": "Transfer files via SCP to remote server",
+            "bash": "scp file.txt user@server:/path/"
+        },
+        {
+            "nl": "Connect to remote server via SSH",
+            "bash": "ssh user@hostname"
+        },
+        {
+            "nl": "Show wireless network interfaces",
+            "bash": "iwconfig"
+        },
+        {
+            "nl": "Create a tar archive of Documents folder",
+            "bash": "tar -czf documents.tar.gz ~/Documents/"
+        },
+        {
+            "nl": "List contents of zip file without extracting",
+            "bash": "unzip -l archive.zip"
+        },
+        {
+            "nl": "Extract specific file from tar archive",
+            "bash": "tar -xzf archive.tar.gz path/to/file"
+        },
+        {
+            "nl": "Create password-protected zip archive",
+            "bash": "zip -e -r secure.zip folder/"
+        },
+        {
+            "nl": "Compress file using gzip",
+            "bash": "gzip largefile.txt"
+        },
+        {
+            "nl": "Decompress a .gz file",
+            "bash": "gunzip file.txt.gz"
+        },
+        {
+            "nl": "Create zip archive excluding certain files",
+            "bash": "zip -r archive.zip folder/ -x \"*.tmp\""
+        },
+        {
+            "nl": "Show compression ratio of archived file",
+            "bash": "gzip -l file.txt.gz"
+        },
+        {
+            "nl": "Show current date and time",
+            "bash": "date"
+        },
+        {
+            "nl": "Display time in UTC format",
+            "bash": "date -u"
+        },
+        {
+            "nl": "Show calendar for current month",
+            "bash": "cal"
+        },
+        {
+            "nl": "Find files modified today",
+            "bash": "find . -newermt \"00:00\""
+        },
+        {
+            "nl": "Set system date to specific value",
+            "bash": "sudo date -s \"2024-01-15 10:30:00\""
+        },
+        {
+            "nl": "Show timestamp of file modification",
+            "bash": "stat -c %y filename"
+        },
+        {
+            "nl": "Display time in specific timezone",
+            "bash": "TZ='America/New_York' date"
+        },
+        {
+            "nl": "Calculate time difference between dates",
+            "bash": "echo $(($(date -d \"2024-01-01\" +%s) - $(date -d \"2023-01-01\" +%s)))"
+        },
+        {
+            "nl": "Change ownership of file to user john",
+            "bash": "chown john filename"
+        },
+        {
+            "nl": "Add read permission for group on file",
+            "bash": "chmod g+r filename"
+        },
+        {
+            "nl": "Show all users on the system",
+            "bash": "cat /etc/passwd"
+        },
+        {
+            "nl": "Add new user account",
+            "bash": "sudo useradd newuser"
+        },
+        {
+            "nl": "Change password for current user",
+            "bash": "passwd"
+        },
+        {
+            "nl": "Show groups current user belongs to",
+            "bash": "groups"
+        },
+        {
+            "nl": "Switch to another user account",
+            "bash": "su - username"
+        },
+        {
+            "nl": "Run command as different user",
+            "bash": "sudo -u username command"
+        },
+        {
+            "nl": "Set file permissions to 755",
+            "bash": "chmod 755 script.sh"
+        },
+        {
+            "nl": "Find command location in PATH",
+            "bash": "which python"
+        },
+        {
+            "nl": "Search for files larger than 100MB",
+            "bash": "find / -size +100M"
+        },
+        {
+            "nl": "Locate all instances of nginx binary",
+            "bash": "whereis nginx"
+        },
+        {
+            "nl": "Find files owned by specific user",
+            "bash": "find /home -user john"
+        },
+        {
+            "nl": "Search for recently accessed files",
+            "bash": "find . -atime -1"
+        },
+        {
+            "nl": "Find executable files in current directory",
+            "bash": "find . -type f -executable"
+        },
+        {
+            "nl": "Search for files with specific extension recursively",
+            "bash": "find . -name \"*.py\" -type f"
+        },
+        {
+            "nl": "Locate configuration files for apache",
+            "bash": "locate apache2.conf"
+        },
+        {
+            "nl": "Start the nginx service",
+            "bash": "sudo systemctl start nginx"
+        },
+        {
+            "nl": "Check status of SSH service",
+            "bash": "systemctl status ssh"
+        },
+        {
+            "nl": "Enable service to start at boot",
+            "bash": "sudo systemctl enable mysql"
+        },
+        {
+            "nl": "Restart the network service",
+            "bash": "sudo systemctl restart networking"
+        },
+        {
+            "nl": "List all running services",
+            "bash": "systemctl list-units --type=service"
+        },
+        {
+            "nl": "Stop the apache2 service",
+            "bash": "sudo systemctl stop apache2"
+        },
+        {
+            "nl": "Show service logs for last hour",
+            "bash": "journalctl -u servicename --since \"1 hour ago\""
+        },
+        {
+            "nl": "Reload service configuration without restart",
+            "bash": "sudo systemctl reload nginx"
+        },
+        {
+            "nl": "Show disk usage of each directory",
+            "bash": "du -h --max-depth=1"
+        },
+        {
+            "nl": "Find largest directories in root",
+            "bash": "du -h / | sort -hr | head -10"
+        },
+        {
+            "nl": "Check filesystem for errors",
+            "bash": "sudo fsck /dev/sda1"
+        },
+        {
+            "nl": "Show available disk space",
+            "bash": "df -h"
+        },
+        {
+            "nl": "Mount USB drive to /mnt/usb",
+            "bash": "sudo mount /dev/sdb1 /mnt/usb"
+        },
+        {
+            "nl": "Unmount a mounted filesystem",
+            "bash": "sudo umount /mnt/usb"
+        },
+        {
+            "nl": "Show disk partition information",
+            "bash": "lsblk"
+        },
+        {
+            "nl": "Create new filesystem on partition",
+            "bash": "sudo mkfs.ext4 /dev/sdb1"
+        },
+        {
+            "nl": "Display the last 10 lines of a log file",
+            "bash": "tail -n 10 logfile.log"
+        },
+        {
+            "nl": "Find all files larger than 100MB in the home directory",
+            "bash": "find ~ -type f -size +100M"
+        },
+        {
+            "nl": "Create a backup of a directory",
+            "bash": "cp -r /path/to/directory /path/to/backup"
+        },
+        {
+            "nl": "Check disk space usage of a specific directory",
+            "bash": "du -sh /path/to/directory"
+        },
+        {
+            "nl": "Show the last 5 commands executed",
+            "bash": "history | tail -n 5"
+        },
+        {
+            "nl": "Find all files with a specific extension in the current directory",
+            "bash": "find . -name \"*.txt\""
+        },
+        {
+            "nl": "Display the contents of a file with line numbers",
+            "bash": "cat -n filename.txt"
+        },
+        {
+            "nl": "Check if a file exists",
+            "bash": "test -f filename.txt && echo \"File exists\" || echo \"File does not exist\""
+        },
+        {
+            "nl": "Monitor free memory and swap in real time, updating every 2 seconds",
+            "bash": "watch -n 2 free -h"
+        },
+        {
+            "nl": "Display extended disk I/O statistics every 5 seconds, 10 times",
+            "bash": "iostat -x 5 10"
+        },
+        {
+            "nl": "Recursively change owner and group of /var/www to www-data",
+            "bash": "sudo chown -R www-data:www-data /var/www"
+        },
+        {
+            "nl": "Calculate the SHA-256 checksum of file.txt",
+            "bash": "sha256sum file.txt"
+        },
+        {
+            "nl": "Find all symbolic links under the home directory",
+            "bash": "find ~ -type l"
+        },
+        {
+            "nl": "Archive the directory project/ into a bzip2-compressed tarball",
+            "bash": "tar -cjf project.tar.bz2 project/"
+        },
+        {
+            "nl": "Search for processes listening on TCP port 443",
+            "bash": "lsof -i TCP:443"
+        },
+        {
+            "nl": "Synchronize the local folder ./site/ to a remote server via rsync",
+            "bash": "rsync -avz ./site/ user@remote.example.com:/var/www/"
+        },
+        {
+            "nl": "Display SMART health summary for /dev/sda",
+            "bash": "sudo smartctl -H /dev/sda"
+        },
+        {
+            "nl": "Show the last 50 lines from /var/log/syslog containing \"warn\"",
+            "bash": "grep -i \"warn\" /var/log/syslog | tail -n 50"
+        },
+        {
+            "nl": "List files in the current directory sorted by modification time",
+            "bash": "ls -lt"
+        },
+        {
+            "nl": "Find files modified in the last 60 minutes",
+            "bash": "find . -mmin -60"
+        },
+        {
+            "nl": "Monitor per-CPU usage statistics every second",
+            "bash": "mpstat -P ALL 1"
+        },
+        {
+            "nl": "Count how many times the word \"foo\" appears in all .log files",
+            "bash": "grep -o \"foo\" *.log | wc -l"
+        },
+        {
+            "nl": "Generate a 4096-bit RSA key pair",
+            "bash": "ssh-keygen -t rsa -b 4096"
+        },
+        {
+            "nl": "Clone a Git repository including all its submodules",
+            "bash": "git clone --recurse-submodules https://github.com/user/repo.git"
+        },
+        {
+            "nl": "Copy a directory preserving all attributes and show progress",
+            "bash": "rsync -a --info=progress2 src/ dest/"
+        },
+        {
+            "nl": "Create a 1 GB file filled with zeros",
+            "bash": "dd if=/dev/zero of=file.img bs=1M count=1024"
+        },
+        {
+            "nl": "Show the last 100 lines of logfile.log and follow new entries",
+            "bash": "tail -n 100 -f logfile.log"
+        },
+        {
+            "nl": "Stream the system journal in real time",
+            "bash": "journalctl -f"
+        },
+        {
+            "nl": "Fetch only the HTTP headers from example.com",
+            "bash": "curl -I http://example.com"
+        },
+        {
+            "nl": "List the 10 largest files under /var/log",
+            "bash": "du -ah /var/log | sort -rh | head -n 10"
+        },
+        {
+            "nl": "Replace all tabs with four spaces in file.txt in place",
+            "bash": "expand -t 4 file.txt > tmp && mv tmp file.txt"
+        },
+        {
+            "nl": "Split a large CSV into 100 MB chunks prefixed with \"chunk_\"",
+            "bash": "split -b 100M data.csv chunk_"
+        }
+    ]
+} 

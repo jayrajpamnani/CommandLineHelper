@@ -1,0 +1,236 @@
+[
+  {
+    "timestamp": "2025-06-07T14:01:46.160320",
+    "input": "List All the directories",
+    "output": "The output should include a list of all the directories."
+  },
+  {
+    "timestamp": "2025-06-07T14:02:56.021481",
+    "input": "Print the current working directory",
+    "output": "print cd"
+  },
+  {
+    "timestamp": "2025-06-07T14:22:02.278819",
+    "input": "find all text files in my home directory",
+    "output": "",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T14:22:32.836248",
+    "input": "find all text files in my home directory",
+    "output": "",
+    "debug_info": {
+      "action": "find",
+      "targets": [
+        "~"
+      ],
+      "options": [
+        ""
+      ],
+      "parameters": {
+        "parameter": ""
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-07T14:23:34.113355",
+    "input": "find all text files in my home directory",
+    "output": "",
+    "debug_info": {
+      "action": "find",
+      "targets": [
+        "~"
+      ],
+      "options": [
+        ""
+      ],
+      "parameters": {
+        "parameter": ""
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-07T14:25:48.422295",
+    "input": "find all text files in my home directory",
+    "output": "find ~",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:18:40.902636",
+    "input": "List all files in the current directory",
+    "output": "ls -l .",
+    "debug_info": {
+      "action": "list",
+      "targets": [
+        "."
+      ],
+      "options": [],
+      "parameters": {}
+    }
+  },
+  {
+    "timestamp": "2025-06-07T20:19:43.229201",
+    "input": "Find all Python files in the current directory and its subdirectories",
+    "output": "find . -type f",
+    "debug_info": {
+      "action": "find",
+      "targets": [
+        "."
+      ],
+      "options": [],
+      "parameters": {}
+    }
+  },
+  {
+    "timestamp": "2025-06-07T20:20:00.093491",
+    "input": "Create a new directory called 'test' and move all .txt files from the current directory into it",
+    "output": "mkdir -p .txt",
+    "debug_info": {
+      "action": "create",
+      "targets": [
+        ".txt"
+      ],
+      "options": [],
+      "parameters": {}
+    }
+  },
+  {
+    "timestamp": "2025-06-07T20:21:35.043098",
+    "input": "Create a new directory called 'backup' and move all .txt files from the current directory into it, then list the contents of the backup directory",
+    "output": "mkdir -p backup .txt backup",
+    "debug_info": {
+      "action": "create",
+      "targets": [
+        "backup",
+        ".txt",
+        "backup"
+      ],
+      "options": [
+        "-a"
+      ],
+      "parameters": {}
+    }
+  },
+  {
+    "timestamp": "2025-06-07T20:22:17.319031",
+    "input": "Create a new directory called 'backup' and move all .txt files from the current directory into it, then list the contents of the backup directory",
+    "output": "mkdir -a backup .txt backup",
+    "debug_info": {
+      "action": "create",
+      "targets": [
+        "backup",
+        ".txt",
+        "backup"
+      ],
+      "options": [
+        "-a"
+      ],
+      "parameters": {}
+    }
+  },
+  {
+    "timestamp": "2025-06-07T20:29:25.622507",
+    "input": "Create a new directory called 'backup' and move all .txt files from the current directory into it, then list the contents of the backup directory",
+    "output": "mkdir -a backup .txt backup",
+    "debug_info": {
+      "action": "create",
+      "targets": [
+        "backup",
+        ".txt",
+        "backup"
+      ],
+      "options": [
+        "-a"
+      ],
+      "parameters": {}
+    }
+  },
+  {
+    "timestamp": "2025-06-07T20:30:51.612887",
+    "input": "Create a new directory called 'backup' and move all .txt files from the current directory into it, then list the contents of the backup directory",
+    "output": "mkdir  backup && mv -r .txt files",
+    "debug_info": {
+      "steps": [
+        {
+          "action": "create",
+          "targets": [
+            "backup"
+          ],
+          "options": [],
+          "parameters": {}
+        },
+        {
+          "action": "move",
+          "targets": [
+            ".txt files"
+          ],
+          "options": [
+            "-r"
+          ],
+          "parameters": {}
+        }
+      ],
+      "is_multi_step": true
+    }
+  },
+  {
+    "timestamp": "2025-06-07T20:41:14.800127",
+    "input": "list all files in the current directory",
+    "output": "ls -a .",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:42:42.951970",
+    "input": "find all python files in the current directory",
+    "output": "find . -a",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:43:39.604099",
+    "input": "create a new directory called test and move all .txt files into it",
+    "output": "mkdir  test && mv none all .txt files",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:44:16.683247",
+    "input": "show me the last 10 lines of the requirements.txt file",
+    "output": "ls  .",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:44:53.698558",
+    "input": "count the number of lines in all python files",
+    "output": " -a .",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:45:31.613480",
+    "input": "search for the word 'model' in all files",
+    "output": "search -a model",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:46:07.946455",
+    "input": "compress all .log files into a single archive",
+    "output": "compress  all .log files",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:46:43.509540",
+    "input": "show disk usage of the current directory",
+    "output": "ls  .",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:47:52.908940",
+    "input": "find all files modified in the last 24 hours",
+    "output": "find . -a",
+    "debug_info": null
+  },
+  {
+    "timestamp": "2025-06-07T20:48:29.993157",
+    "input": "create a backup of the src directory",
+    "output": "mkdir  .",
+    "debug_info": null
+  }
+]

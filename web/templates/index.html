@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Line Helper</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800">Command Line Helper</h1>
+            <p class="text-gray-600 mt-2">Convert natural language to bash commands</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Column: Input and History -->
+            <div class="space-y-6">
+                <!-- Command Input -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Enter Command</h2>
+                    <div class="space-y-4">
+                        <textarea id="commandInput" 
+                                class="w-full h-32 p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Type your command in natural language..."></textarea>
+                        <button onclick="convertCommand()" 
+                                class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Convert
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Command History -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold">Command History</h2>
+                        <div class="relative">
+                            <input type="text" 
+                                   id="searchHistory" 
+                                   class="pl-8 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                   placeholder="Search history...">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div id="historyList" class="space-y-4 max-h-96 overflow-y-auto">
+                        <!-- History items will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Templates and Output -->
+            <div class="space-y-6">
+                <!-- Command Templates -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold">Templates</h2>
+                        <button onclick="showNewTemplateModal()" 
+                                class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                            New Template
+                        </button>
+                    </div>
+                    <div id="templatesList" class="space-y-4">
+                        <!-- Templates will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Command Output -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Generated Command</h2>
+                    <div id="commandOutput" class="bg-gray-50 p-4 rounded-lg font-mono">
+                        <!-- Command output will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Template Modal -->
+    <div id="templateModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md">
+            <h3 class="text-xl font-semibold mb-4">Create New Template</h3>
+            <div class="space-y-4">
+                <input type="text" 
+                       id="templateName" 
+                       class="w-full p-2 border rounded-lg"
+                       placeholder="Template name">
+                <textarea id="templateCommand" 
+                         class="w-full h-32 p-2 border rounded-lg"
+                         placeholder="Command template..."></textarea>
+                <div class="flex justify-end space-x-4">
+                    <button onclick="hideNewTemplateModal()" 
+                            class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                        Cancel
+                    </button>
+                    <button onclick="saveTemplate()" 
+                            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentCommandId = null;
+
+        // Convert command
+        async function convertCommand() {
+            const input = document.getElementById('commandInput').value;
+            if (!input) return;
+
+            console.log('Sending request with input:', input);
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/convert', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: input })
+                });
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (data.error) {
+                    console.error('Error from server:', data.error);
+                    alert(data.error);
+                    return;
+                }
+
+                currentCommandId = data.id;
+                console.log('Setting command output:', data.command);
+                document.getElementById('commandOutput').textContent = data.command;
+                loadHistory();
+            } catch (error) {
+                console.error('Error details:', error);
+                alert('An error occurred while converting the command');
+            }
+        }
+
+        // Load command history
+        async function loadHistory() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/history');
+                const history = await response.json();
+                
+                const historyList = document.getElementById('historyList');
+                historyList.innerHTML = history.map(cmd => `
+                    <div class="border rounded-lg p-4 hover:bg-gray-50">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-medium">${cmd.input}</p>
+                                <p class="text-gray-600 text-sm mt-1">${cmd.output}</p>
+                                <p class="text-gray-500 text-xs mt-2">${new Date(cmd.timestamp).toLocaleString()}</p>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="provideFeedback(${cmd.id}, true)" 
+                                        class="text-green-500 hover:text-green-600">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </button>
+                                <button onclick="provideFeedback(${cmd.id}, false)" 
+                                        class="text-red-500 hover:text-red-600">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Load templates
+        async function loadTemplates() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/templates');
+                const templates = await response.json();
+                
+                const templatesList = document.getElementById('templatesList');
+                templatesList.innerHTML = templates.map(template => `
+                    <div class="border rounded-lg p-4 hover:bg-gray-50">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-medium">${template.name}</p>
+                                <p class="text-gray-600 text-sm mt-1">${template.command}</p>
+                            </div>
+                            <button onclick="useTemplate('${template.command}')" 
+                                    class="text-blue-500 hover:text-blue-600">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Provide feedback
+        async function provideFeedback(commandId, feedback) {
+            try {
+                await fetch('http://127.0.0.1:5000/api/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: commandId, feedback })
+                });
+                loadHistory();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Template functions
+        function showNewTemplateModal() {
+            document.getElementById('templateModal').classList.remove('hidden');
+            document.getElementById('templateModal').classList.add('flex');
+        }
+
+        function hideNewTemplateModal() {
+            document.getElementById('templateModal').classList.add('hidden');
+            document.getElementById('templateModal').classList.remove('flex');
+        }
+
+        async function saveTemplate() {
+            const name = document.getElementById('templateName').value;
+            const command = document.getElementById('templateCommand').value;
+
+            if (!name || !command) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            try {
+                await fetch('http://127.0.0.1:5000/api/templates', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, command })
+                });
+                hideNewTemplateModal();
+                loadTemplates();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function useTemplate(command) {
+            document.getElementById('commandInput').value = command;
+        }
+
+        // Search functionality
+        document.getElementById('searchHistory').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const historyItems = document.querySelectorAll('#historyList > div');
+            
+            historyItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Initial load
+        loadHistory();
+        loadTemplates();
+    </script>
+</body>
+</html> 
