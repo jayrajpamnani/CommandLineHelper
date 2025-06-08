@@ -1,4 +1,6 @@
-# MergeLLM - Natural Language to Bash Command Converter
+Note: The earlier name of this project was MergeLLM as my initial plan was to merge two LLMs but it's accuracy wasn't that good so i found a different single LLM and used it in this project. So if you find MergeLLM title anywhere, don't get confused.
+
+# CommandLineHelper - Natural Language to Bash Command Converter
 
 This project uses a quantized CodeLlama model to convert natural language instructions into bash commands. It provides accurate command-line translations with a simple and efficient pipeline. You can use it via the command line or a modern web interface.
 
@@ -102,7 +104,7 @@ You can now use the web interface to enter natural language commands and get bas
 ## Project Structure
 
 ```
-MergeLLM/
+CommandLineHelper/
 ├── models/              # Directory for model files (auto-downloaded)
 ├── src/
 │   ├── models/         # Model loading and inference code
